@@ -1,0 +1,31 @@
+Plugins
+
+Plugins work almost identically to Helpers. The main difference is that a plugin usually provides a single function, whereas a Helper is usually a collection of functions. Helpers are also considered a part of the core system; plugins are intended to be created and shared by our community.
+
+Plugins should be saved to your system/plugins directory or you can create a folder called plugins inside your application folder and store them there. CodeIgniter will look first in your system/application/plugins directory. If the directory does not exist or the specified plugin is not located there CI will instead look in your global system/plugins folder.
+
+Loading a Plugin
+
+Loading a plugin file is quite simple using the following function:
+
+$this->load->plugin('name');
+Where name is the file name of the plugin, without the .php file extension or the "plugin" part.
+
+For example, to load the Captcha plugin, which is named captcha_pi.php, you will do this:
+
+$this->load->plugin('captcha');
+A plugin can be loaded anywhere within your controller functions (or even within your View files, although that's not a good practice), as long as you load it before you use it. You can load your plugins in your controller constructor so that they become available automatically in any function, or you can load a plugin in a specific function that needs it.
+
+Note: The Plugin loading function above does not return a value, so don't try to assign it to a variable. Just use it as shown.
+Loading Multiple Plugins
+
+If you need to load more than one plugin you can specify them in an array, like this:
+
+$this->load->plugin( array('plugin1', 'plugin2', 'plugin3') );
+Auto-loading Plugins
+
+If you find that you need a particular plugin globally throughout your application, you can tell CodeIgniter to auto-load it during system initialization. This is done by opening the application/config/autoload.php file and adding the plugin to the autoload array.
+
+Using a Plugin
+
+Once you've loaded the Plugin, you'll call it the way you would a standard PHP function.
